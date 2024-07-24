@@ -1,4 +1,7 @@
-use wasi_pyrb_diff_test::test_executor::{execute_test, LanguageType, PlatformType, PrintResult, TestInfo};
+use wasi_pyrb_diff_test::grammar::{str_helper::replace_scope_with_indent,predef_grammars::get_python_grammar, Union};
+use wasi_pyrb_diff_test::grammar_fuzzer::var_ctx::ir_to_ctx;
+use wasi_pyrb_diff_test::grammar_fuzzer::GrammarsFuzzer;
+use wasi_pyrb_diff_test::test_executor::{execute_test, LanguageType, PlatformType, PrintResult, TestInfo, PYTHON_TEST_INFOS};
 
 
 
@@ -9,49 +12,26 @@ fn main(){
     .unwrap()
     .block_on(
         async{
-            let ruby_test_infos =  [
-                TestInfo{
-                target_platform:PlatformType::V8,
-                target_language:LanguageType::Ruby
-                },
-                 TestInfo{
-                target_platform:PlatformType::JavascriptCore,
-                target_language:LanguageType::Ruby
-                }, 
-                 TestInfo{
-                target_platform:PlatformType::SpiderMonkey,
-                target_language:LanguageType::Ruby
-                }, 
-                TestInfo{
-                target_platform:PlatformType::Native,
-                target_language:LanguageType::Ruby
-                }
-            ]; 
-            let python_test_infos =  [
-                TestInfo{
-                target_platform:PlatformType::V8,
-                target_language:LanguageType::Python
-                },
-                 TestInfo{
-                target_platform:PlatformType::JavascriptCore,
-                target_language:LanguageType::Python
-                }, 
-                 TestInfo{
-                target_platform:PlatformType::SpiderMonkey,
-                target_language:LanguageType::Python
-                }, 
-                TestInfo{
-                target_platform:PlatformType::Native,
-                target_language:LanguageType::Python
-                }
-            ];
+            let mut f = GrammarsFuzzer::new(
+                &get_python_grammar(),
+                "<start>",
+                10,
+                100,
+                Union::OnlyA(false),
+            );
+        
+            //let mut rand_seed = (SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_millis() & ((1<<65) - 1)) as u64;
+            let mut rand_seed = 17526186317047798642;
+            let testcase = f.fuzz(&mut rand_seed);
 
+            let testcase_path = "./testcase.py";
+            std::fs::write(&testcase_path,  replace_scope_with_indent(&ir_to_ctx(&testcase, &mut rand_seed.clone()))).unwrap();
             let mut docker = docker_api::Docker::new("unix:///var/run/docker.sock").unwrap();
 
             let mut results:Vec<PrintResult> = Vec::new(); 
 
-            for test_info in python_test_infos{
-              let result = execute_test(&mut docker, test_info).await;
+            for test_info in PYTHON_TEST_INFOS{
+              let result = execute_test(&mut docker, test_info, &testcase_path).await;
               results.push(result);
             }
             

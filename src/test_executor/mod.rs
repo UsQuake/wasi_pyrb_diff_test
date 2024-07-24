@@ -3,6 +3,44 @@ use docker_api::{conn::TtyChunk, Docker};
 use futures::StreamExt;
 use std::{str, fs::File, io::Read};
 use std::time::Instant;
+
+pub static PYTHON_TEST_INFOS:& 'static [TestInfo;4] =  &[
+    TestInfo{
+    target_platform:PlatformType::V8,
+    target_language:LanguageType::Python
+    },
+     TestInfo{
+    target_platform:PlatformType::JavascriptCore,
+    target_language:LanguageType::Python
+    }, 
+     TestInfo{
+    target_platform:PlatformType::SpiderMonkey,
+    target_language:LanguageType::Python
+    }, 
+    TestInfo{
+    target_platform:PlatformType::Native,
+    target_language:LanguageType::Python
+    }
+];
+
+pub static RUBY_TEST_INFOS:& 'static [TestInfo;4] =  &[
+    TestInfo{
+    target_platform:PlatformType::V8,
+    target_language:LanguageType::Ruby
+    },
+     TestInfo{
+    target_platform:PlatformType::JavascriptCore,
+    target_language:LanguageType::Ruby
+    }, 
+     TestInfo{
+    target_platform:PlatformType::SpiderMonkey,
+    target_language:LanguageType::Ruby
+    }, 
+    TestInfo{
+    target_platform:PlatformType::Native,
+    target_language:LanguageType::Ruby
+    }
+]; 
 pub struct PrintResult{
     pub stdout: String,
     pub stderr: String
@@ -19,12 +57,12 @@ pub struct TestInfo{
     pub target_language:LanguageType
 }
 
-pub async fn execute_test<'a>(docker:&mut Docker, test_target:TestInfo)-> PrintResult{
+pub async fn execute_test<'a>(docker:&mut Docker, test_target:&TestInfo, testcase_path: &'a str)-> PrintResult{
     let container_name = "testcase_execution_container".to_string();
     let mut image_name = String::with_capacity(6);
     //["./jsc", "module-ready-wasi-py.js", "--", "none"]
     let mut execution_command: Vec<& 'a str> = Vec::with_capacity(3);
-    let mut host_testcase_path: String = "/opt/experiment3/testcase_volume/testcase.".to_string();
+    let host_testcase_path = testcase_path;
     let mut container_testcase_path: String = "/root/".to_string();
 
   match test_target.target_platform{
@@ -52,7 +90,6 @@ pub async fn execute_test<'a>(docker:&mut Docker, test_target:TestInfo)-> PrintR
     match test_target.target_language{
         LanguageType::Python => {
             image_name += "py";
-            host_testcase_path += "py";
 
             match test_target.target_platform{
                 PlatformType::Native => {
@@ -68,7 +105,6 @@ pub async fn execute_test<'a>(docker:&mut Docker, test_target:TestInfo)-> PrintR
         },
         LanguageType::Ruby => {
             image_name += "rb";
-            host_testcase_path += "rb";
             match test_target.target_platform{
                 PlatformType::Native => {
                     container_testcase_path += "rb-native-sandbox/testcase.rb";
@@ -113,9 +149,6 @@ pub async fn execute_test<'a>(docker:&mut Docker, test_target:TestInfo)-> PrintR
             {
                 eprintln!("Error: {e}")
             }
-
-
-
 
             let opts = ContainerRestartOpts::builder();
 
