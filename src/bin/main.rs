@@ -7,6 +7,7 @@ use wasi_pyrb_diff_test::test_executor::{execute_test, PrintResult, PYTHON_TEST_
 
 #[tokio::main]
 async fn main() {
+    
             let mut f = GrammarsFuzzer::new(
                 &get_python_grammar(),
                 "<start>",
@@ -19,7 +20,7 @@ async fn main() {
             let mut rand_seed = 17526186317047798642;
             let testcase_path = "./testcase.py";
 
-            
+
             let testcase = f.fuzz(&mut rand_seed);
             std::fs::write(&testcase_path,  replace_scope_with_indent(&ir_to_ctx(&testcase, &mut rand_seed.clone()))).unwrap();
             let mut results:Vec<PrintResult> = Vec::new(); 
