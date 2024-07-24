@@ -14,15 +14,14 @@ async fn main() {
                 100,
                 Union::OnlyA(false),
             );
-        
+            let mut docker = docker_api::Docker::new("unix:///var/run/docker.sock").unwrap();
             //let mut rand_seed = (SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_millis() & ((1<<65) - 1)) as u64;
             let mut rand_seed = 17526186317047798642;
-            let testcase = f.fuzz(&mut rand_seed);
-
             let testcase_path = "./testcase.py";
-            std::fs::write(&testcase_path,  replace_scope_with_indent(&ir_to_ctx(&testcase, &mut rand_seed.clone()))).unwrap();
-            let mut docker = docker_api::Docker::new("unix:///var/run/docker.sock").unwrap();
 
+            
+            let testcase = f.fuzz(&mut rand_seed);
+            std::fs::write(&testcase_path,  replace_scope_with_indent(&ir_to_ctx(&testcase, &mut rand_seed.clone()))).unwrap();
             let mut results:Vec<PrintResult> = Vec::new(); 
 
             for test_info in PYTHON_TEST_INFOS{
@@ -30,13 +29,8 @@ async fn main() {
               results.push(result);
             }
             
-            println!("{:?}",results[0].stdout);
-            println!("{:?}",results[1].stdout);
-            println!("{:?}",results[2].stdout);
-            println!("{:?}",results[3].stdout);
             assert!(results[0].stdout == results[1].stdout);
             assert!(results[1].stdout == results[2].stdout);
-            assert!(results[2].stdout == results[3].stdout);
+            assert!(results[2].stdout == results[3].stdout.clone() + &results[3].stderr);
 
 }
-
