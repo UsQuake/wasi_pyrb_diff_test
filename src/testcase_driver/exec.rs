@@ -69,21 +69,17 @@ pub async fn execute_test<'a>(docker:&mut Docker, test_target:&TestInfo, testcas
         PlatformType::V8 => {
             image_name += "d8_";
             execution_command.push("./d8");
-            println!("V8");
         },
         PlatformType::SpiderMonkey => {
             image_name += "js_";
             execution_command.push("./js");
-            println!("Spidermonkey");
         },
         PlatformType::JavascriptCore => {
             image_name += "jsc_";
             execution_command.push("./jsc");
-            println!("JavascriptCore");
         },
         PlatformType::Native => {
             image_name += "na_";
-            println!("Native");
         }
     };
 
@@ -170,7 +166,6 @@ pub async fn execute_test<'a>(docker:&mut Docker, test_target:&TestInfo, testcas
             let mut stdout = String::with_capacity(32);
             let mut stderr = String::with_capacity(32);
             
-            let now = Instant::now();
             while let Some(exec_result) = stream.next().await {
               match exec_result {
                 Ok(chunk) => {
@@ -189,7 +184,6 @@ pub async fn execute_test<'a>(docker:&mut Docker, test_target:&TestInfo, testcas
                 Err(e) => eprintln!("Error: {e}"),
                }
             }
-            println!("exec 소요시간: {}", now.elapsed().as_secs());
 
             let opts = ContainerStopOpts::builder()
                 .wait(std::time::Duration::from_secs(0));
