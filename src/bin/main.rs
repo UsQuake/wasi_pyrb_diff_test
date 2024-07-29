@@ -7,7 +7,7 @@ use wasi_pyrb_diff_test::testcase_driver::omit_testcase_or_other_name;
 
 #[tokio::main]
 async fn main() {
-            let test_count = 83;
+            let test_count = 10;
             let mut f = GrammarsFuzzer::new(
                 &get_python_grammar(),
                 "<start>",
@@ -17,13 +17,13 @@ async fn main() {
             );
             let mut docker = docker_api::Docker::new("unix:///var/run/docker.sock").unwrap();
             //let mut rand_seed = (SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_millis() & ((1<<65) - 1)) as u64;
-            let mut rand_seed = 17526186317047798642;
-            let testcase_path = "./testcase.py";
+            //let mut rand_seed = 17526186317047798642;
+            let testcase_path = "./testcase540.py";
 
-            for _ in 0..test_count{   
-                let testcase = f.fuzz(&mut rand_seed);
-                let test_input = replace_scope_with_indent(&ir_to_ctx(&testcase, &mut rand_seed.clone()));
-                std::fs::write(&testcase_path, &test_input).unwrap();
+            for i in 0..test_count{   
+                //let testcase = f.fuzz(&mut rand_seed);
+                //let test_input = replace_scope_with_indent(&ir_to_ctx(&testcase, &mut rand_seed.clone()));
+                //std::fs::write(&testcase_path, &test_input).unwrap();
                 let mut results:Vec<PrintResult> = Vec::new(); 
 
                 for test_info in PYTHON_TEST_INFOS{
@@ -45,15 +45,37 @@ async fn main() {
                
 
                 if !are_js_engines_result_same{
-                    if is_v8_and_spidermonkey_result_same{
-                        println!("⚠Warning!: JavascriptCore crashed!");
+
+                    if is_jsc_and_spidermonkey_result_same{
+
+                        println!("⚠Warning!: V8 result is different with other engines!");
+                        println!("d8(V8):\n{}", results[0].stdout);
+
+                    }else if is_v8_and_spidermonkey_result_same{
+
+                        println!("⚠Warning!: JavascriptCore result is different with other engines!");
+                        println!("jsc(JavascriptCore):\n{}", results[1].stdout);
+
+                    }else if is_v8_and_jsc_result_same{
+
+                        println!("⚠Warning!: SpiderMonkey result is different with other engines!");
+                        println!("JsShell(SpiderMonkey):\n{}", results[2].stdout);
+
                     }else{
-                        println!("⚠Warning!: results between js engines are different.");
+
+                        println!("⚠Warning!: Each result of js engines different with other engines!");
+                        println!("d8(V8):\n{}", results[0].stdout);
+                        println!("jsc(JavascriptCore):\n{}", results[1].stdout);
+                        println!("JsShell(SpiderMonkey):\n{}", results[2].stdout);
+
                     }
-                    omit_testcase_or_other_name("./issued_testcases/jsc", &test_input, &LanguageType::Python);
+                    //std::fs::write("./issued_testcases/jsc/testcase".to_string() + &i.to_string() + ".py", &test_input).unwrap();
                 }else if !is_native_wasm_same{
-                    println!("⚠Warning!: results between native and wasm is different.");
-                    omit_testcase_or_other_name("./issued_testcases/native_vs_wasm", &test_input, &LanguageType::Python);
+                    println!("d8 stdout:\n{}", results[1].stdout);
+                    println!("native stdout:\n{}", results[3].stdout);
+                    println!("native stderr:\n{}", results[3].stderr);
+                    //std::fs::write("./issued_testcases/native_vs_wasm/testcase".to_string() + &i.to_string() + ".py", &test_input).unwrap();
+                    //omit_testcase_or_other_name("./issued_testcases/native_vs_wasm", &test_input, &LanguageType::Python);
                 }
             }
 
