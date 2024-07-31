@@ -1,6 +1,5 @@
 # Native vs WASM Python/Ruby
 
-
  ## Introduction
  
   This project demonstrates differential test between native and WASM(WASI polyfilled version which runs on V8, JavascriptCore, SpiderMonkey) python/ruby.
@@ -10,7 +9,7 @@
  - Rust version **1.71.1** [2021 edition]
  - Docker(API version **1.4.0**)
 
- ## Build
+ ## How to replicate this experiment
  
  ### 1. Clone this repository.
  
@@ -20,7 +19,7 @@
 
  - ```cd path/to/clone/wasi_pyrb_diff_test```
 
- ### 2. Build the all the docker images of V8-WASM-python-sandbox, Native-python-sandbox, ..., etc.
+ ### 3. Build the all the docker images of V8-WASM-python-sandbox, Native-python-sandbox, ..., etc.
 
  - ***You should build images with same tag with given commands***
  - ```sudo docker image build -t d8_py ./sandboxed_imgs/d8_python_wasi```
@@ -31,3 +30,12 @@
  - ```sudo docker image build -t js_rb ./sandboxed_imgs/js_ruby_wasi```
  - ```sudo docker image build -t jsc_rb ./sandboxed_imgs/jsc_ruby_wasi```
  - ```sudo docker image build -t na_rb ./sandboxed_imgs/native_ruby```
+
+ ### 4. Build testcasegenerator & executor
+ - simply build once.
+ - ```cargo build```
+
+ ### 5. Then, run simply or you can simply change the code main
+ 
+ - simply run with
+ - ```sudo target/debug/main```,
