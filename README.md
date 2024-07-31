@@ -9,8 +9,7 @@
  ### Purpose
  
   - I want to test WASM engine that imported in browser JS engines(like V8, JavascriptCore, SpiderMonkey).
-  - So, I decided to test about that WASM execution result is exactly same with native one's
-  - and check execution result between browser js engines is exactly same with one another.
+  - So, I decided to test whether WASM execution result is exactly same with native one's and whether execution result between browser js engines is exactly same with one another.
 
  ### How WASM(WASI) python/ruby works on js debug shell without WebAPI
 
