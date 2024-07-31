@@ -14,14 +14,13 @@
 
  ### How WASM(WASI) python/ruby works on debug shell of V8, JavascriptCore and SpiderMonkey without WebAPI
 
-  - We implement the javascript polyfill to execute python/ruby interpreters with WebAPI features without WebAPI.
+  - We implement the javascript polyfill to execute python/ruby interpreters with WebAPI features without WebAPI(https://github.com/UsQuake/wasi_sandbox_generator/blob/master/base-wasi-py.js).
     
-    * First, Get the javascript async-thread pool code from dartvm/WASM repository().
+    * First, Get the javascript async-thread pool code from dart2wasm repository(https://github.com/dart-lang/sdk/blob/main/pkg/dart2wasm/bin/run_wasm.js).
     * Second, Get the javascript wasi-polyfill code from WASI-Polyfill repository(https://github.com/bjorn3/browser_wasi_shim).
     * Third, Get the UTF-encoding class from ChatGPT(And I adjust it manually).
     * and Gather all of the above, and adjust to make it works.
-    * Lastly, We mapped the all of module file of each interpreters(python, ruby) into Javascript-WASI in-memory file-system
-    * with this macro script(https://github.com/UsQuake/wasi_sandbox_generator).
+    * Lastly, We mapped the all of module file of each interpreters(python, ruby) into Javascript-WASI in-memory file-system with this macro script(https://github.com/UsQuake/wasi_sandbox_generator).
       
  ## Requirements
  
