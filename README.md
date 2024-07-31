@@ -1,14 +1,26 @@
-# Native vs WASM Python/Ruby
+# Native vs WASM Python/Ruby Differential Fuzzing
 
  ## Introduction
  
-  This project demonstrates differential test between native and WASM(WASI polyfilled version which runs on V8, JavascriptCore, SpiderMonkey) python/ruby.
+  This project demonstrates differential fuzzing(test) between native and WASM(WASI polyfilled version which runs on V8, JavascriptCore, SpiderMonkey) python/ruby.
+  
+ ## Explanation
 
+ ### Purpose
+ 
+  - I want to test WASM engine that imported in browser JS engines(like V8, JavascriptCore, SpiderMonkey).
+  - So, I decided to test about that WASM execution result is exactly same with native one's
+  - and check execution result between browser js engines is exactly same with one another.
+
+ ### How WASM(WASI) python works on debug shell without Web-API
+
+  - 
+ 
  ## Requirements
  
  - Rust version **1.71.1** [2021 edition]
  - Docker(API version **1.4.0**)
-
+   
  ## Setup
  
  ### 1. Clone this repository.
@@ -32,6 +44,7 @@
  - ```sudo docker image build -t na_rb ./sandboxed_imgs/native_ruby```
 
  ### 4. Build testcase generator & driver
+ 
  - simply build once.
  - ```cargo build```
 
@@ -39,3 +52,4 @@
  
  - simply run with
  - ```sudo target/debug/main```,
+ - or adjust frameworks by your own purpose.
