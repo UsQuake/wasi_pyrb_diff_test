@@ -13,7 +13,9 @@
  ## Build
  
  ### 1. Clone this repository.
- - with git
- ```
+ 
+ - ```git clone https://github.com/UsQuake/wasi_pyrb_diff_test.git```
 
- ```
+ ### 2. Open the path of repository.
+
+ - ```cd path/to/clone/wasi_pyrb_diff_test```
