@@ -31,7 +31,7 @@
  - ```sudo docker image build -t jsc_rb ./sandboxed_imgs/jsc_ruby_wasi```
  - ```sudo docker image build -t na_rb ./sandboxed_imgs/native_ruby```
 
- ### 4. Build testcasegenerator & executor
+ ### 4. Build testcase generator & driver
  - simply build once.
  - ```cargo build```
 
