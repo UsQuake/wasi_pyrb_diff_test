@@ -12,10 +12,17 @@
   - So, I decided to test about that WASM execution result is exactly same with native one's
   - and check execution result between browser js engines is exactly same with one another.
 
- ### How WASM(WASI) python works on debug shell without Web-API
+ ### How WASM(WASI) python/ruby works on debug shell of V8, JavascriptCore and SpiderMonkey without WebAPI
 
-  - 
- 
+  - We implement the javascript polyfill to execute python/ruby interpreters with WebAPI features without WebAPI.
+    
+    * First, Get the javascript async-thread pool code from dartvm/WASM repository().
+    * Second, Get the javascript wasi-polyfill code from WASI-Polyfill repository(https://github.com/bjorn3/browser_wasi_shim).
+    * Third, Get the UTF-encoding class from ChatGPT(And I adjust it manually).
+    * and Gather all of the above, and adjust to make it works.
+    * Lastly, We mapped the all of module file of each interpreters(python, ruby) into Javascript-WASI in-memory file-system
+    * with this macro script(https://github.com/UsQuake/wasi_sandbox_generator).
+      
  ## Requirements
  
  - Rust version **1.71.1** [2021 edition]
