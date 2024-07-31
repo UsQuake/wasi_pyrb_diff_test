@@ -12,7 +12,7 @@
   - So, I decided to test about that WASM execution result is exactly same with native one's
   - and check execution result between browser js engines is exactly same with one another.
 
- ### How WASM(WASI) python/ruby works on debug shell of V8, JavascriptCore and SpiderMonkey without WebAPI
+ ### How WASM(WASI) python/ruby works on js debug shell without WebAPI
 
   - We implement the javascript polyfill to execute python/ruby interpreters with WebAPI features without WebAPI(https://github.com/UsQuake/wasi_sandbox_generator/blob/master/base-wasi-py.js).
     
