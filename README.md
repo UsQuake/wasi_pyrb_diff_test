@@ -1,4 +1,4 @@
-# Native vs WASM Python/Ruby.
+# Native vs WASM Python/Ruby
 
 
  ## Introduction
