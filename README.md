@@ -1,4 +1,4 @@
-# Native vs WASM Python/Ruby Differential Fuzzing
+# Native vs WASM Python/Ruby differential fuzzing
 
  ## Introduction
  
