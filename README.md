@@ -19,3 +19,15 @@
  ### 2. Open the path of repository.
 
  - ```cd path/to/clone/wasi_pyrb_diff_test```
+
+ ### 2. Build the all the docker images of V8-WASM-python-sandbox, Native-python-sandbox, ..., etc.
+
+ - ***You should build images with same tag with given commands***
+ - ```sudo docker image build -t d8_py ./sandboxed_imgs/d8_python_wasi```
+ - ```sudo docker image build -t js_py ./sandboxed_imgs/js_python_wasi```
+ - ```sudo docker image build -t jsc_py ./sandboxed_imgs/jsc_python_wasi```
+ - ```sudo docker image build -t na_py ./sandboxed_imgs/native_python```
+ - ```sudo docker image build -t d8_rb ./sandboxed_imgs/d8_ruby_wasi```
+ - ```sudo docker image build -t js_rb ./sandboxed_imgs/js_ruby_wasi```
+ - ```sudo docker image build -t jsc_rb ./sandboxed_imgs/jsc_ruby_wasi```
+ - ```sudo docker image build -t na_rb ./sandboxed_imgs/native_ruby```
