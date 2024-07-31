@@ -53,14 +53,14 @@
  ### 3. Build the all the docker images of V8-WASM-python-sandbox, Native-python-sandbox, ..., etc.
 
  - ***You should build images with same tag with given commands***
- - ```sudo docker image build -t d8_py ./sandboxed_imgs/d8_python_wasi```
- - ```sudo docker image build -t js_py ./sandboxed_imgs/js_python_wasi```
- - ```sudo docker image build -t jsc_py ./sandboxed_imgs/jsc_python_wasi```
- - ```sudo docker image build -t na_py ./sandboxed_imgs/native_python```
- - ```sudo docker image build -t d8_rb ./sandboxed_imgs/d8_ruby_wasi```
- - ```sudo docker image build -t js_rb ./sandboxed_imgs/js_ruby_wasi```
- - ```sudo docker image build -t jsc_rb ./sandboxed_imgs/jsc_ruby_wasi```
- - ```sudo docker image build -t na_rb ./sandboxed_imgs/native_ruby```
+ - ```sudo docker image build -t d8_py ./sandbox_imgs/d8_python_wasi```
+ - ```sudo docker image build -t js_py ./sandbox_imgs/js_python_wasi```
+ - ```sudo docker image build -t jsc_py ./sandbox_imgs/jsc_python_wasi```
+ - ```sudo docker image build -t na_py ./sandbox_imgs/native_python```
+ - ```sudo docker image build -t d8_rb ./sandbox_imgs/d8_ruby_wasi```
+ - ```sudo docker image build -t js_rb ./sandbox_imgs/js_ruby_wasi```
+ - ```sudo docker image build -t jsc_rb ./sandbox_imgs/jsc_ruby_wasi```
+ - ```sudo docker image build -t na_rb ./sandbox_imgs/native_ruby```
 
  ### 4. Build testcase generator & driver
  
