@@ -4,12 +4,12 @@
  
   This project demonstrates differential test between native and WASM(WASI polyfilled version which runs on V8, JavascriptCore, SpiderMonkey) python/ruby.
 
- ## Setup and Requirements
+ ## Requirements
  
  - Rust version **1.71.1** [2021 edition]
  - Docker(API version **1.4.0**)
 
- ## How to replicate this experiment
+ ## Setup
  
  ### 1. Clone this repository.
  
