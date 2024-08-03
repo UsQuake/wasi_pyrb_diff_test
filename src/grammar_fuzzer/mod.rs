@@ -5,7 +5,7 @@ use lazy_static::lazy_static;
 use rustc_hash::FxHasher;
 use std::{
     collections::{BTreeSet, HashMap, HashSet},
-    hash::{Hash, Hasher}, time::Instant,
+    hash::{Hash, Hasher}
 };
 mod test;
 pub static mut CACHE_HIT_COUNT: u64 = 0;
@@ -222,19 +222,19 @@ impl<'l_use> GrammarsFuzzer<'l_use> {
             None =>{
                 unsafe{CACHE_MISS_COUNT += 1;}
                 let symbols = nonterminals(expansion);
-                let mut res = 0.0;
+                let res = 
                 if symbols.len() == 0 {
-                    res = 1.0;
+                    1.0
                 }else if symbols.iter().any(|s| seen.contains(s)) {
-                    res = f64::INFINITY;
+                    f64::INFINITY
                 }else{
-                    res = symbols
+                    symbols
                     .iter()
                     .map(|sym| self.symbol_cost(&sym, &seen, 
                     cache))
                     .sum::<f64>()
-                    + 1.0;
-                }
+                    + 1.0
+                };
                 cache.insert(exp_str, res);
                 res
             }

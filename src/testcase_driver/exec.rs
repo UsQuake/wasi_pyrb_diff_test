@@ -2,7 +2,6 @@ use docker_api::opts::{ContainerCreateOpts,ContainerRestartOpts, ContainerStopOp
 use docker_api::{conn::TtyChunk, Docker};
 use futures::StreamExt;
 use std::{str, fs::File, io::Read};
-use std::time::Instant;
 
 pub static PYTHON_TEST_INFOS:& 'static [TestInfo;4] =  &[
     TestInfo{

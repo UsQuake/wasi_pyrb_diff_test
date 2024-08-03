@@ -12,7 +12,7 @@ use super::{
 type Ident = String;
 type Stack<T> = Vec<T>;
 type Trait = HashSet<Ident>;
-type Var = (Ident, Trait);
+//type Var = (Ident, Trait);
 type Vars = HashMap<Ident, Trait>;
 type Context = Stack<Vars>;
 

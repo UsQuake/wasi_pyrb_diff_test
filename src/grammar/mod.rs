@@ -11,7 +11,7 @@ use rustc_hash::FxHasher;
 use std::{
     collections::{BTreeSet, HashMap},
     hash::{Hash, Hasher},
-    time::{Instant, SystemTime, UNIX_EPOCH},
+    time::{SystemTime, UNIX_EPOCH},
 };
 
 // #[derive(Clone)]
