@@ -1,4 +1,4 @@
-use docker_api::{models::ContainerSummary, opts::{ContainerListOpts, ContainerStopOpts}, Container};
+use docker_api::{models::ContainerSummary, opts::{ContainerListOpts, ContainerStopOpts}};
 use exec::{exec_test, LanguageType};
 use tokio::signal;
 use wasi_pyrb_diff_test::testcase_driver::*;
