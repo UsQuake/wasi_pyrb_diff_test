@@ -15,7 +15,6 @@ async fn main() {
         _ = test_exec=>{},
 
         _ = signal::ctrl_c()  => {
-            println!("Ctrl-C detected. End test. Bye!");
             let opts = ContainerListOpts::builder()
                 .all(true)
                 .build();
@@ -42,8 +41,6 @@ async fn main() {
                     }
                 
                 }
-
-                tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
 
                 },
 
