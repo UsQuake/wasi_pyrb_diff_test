@@ -19,16 +19,13 @@ async fn main() {
             let mut docker = docker_api::Docker::new("unix:///var/run/docker.sock").unwrap();
             //let mut rand_seed = (SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_millis() & ((1<<65) - 1)) as u64;
             let mut rand_seed = 17526186317047798642;
-            let testcase_path = "./testcase.py";
-
             for i in 0..test_count{   
                 let testcase = testcase_generator.fuzz(&mut rand_seed);
                 let test_input = replace_scope_with_indent(&ir_to_ctx(&testcase, &mut rand_seed.clone()));
-                std::fs::write(&testcase_path, &test_input).unwrap();
                 let mut results:Vec<PrintResult> = Vec::new(); 
 
                 for test_info in PYTHON_TEST_INFOS{
-                    let result = execute_test(&mut docker, test_info, &testcase_path).await;
+                    let result = execute_test(&mut docker, test_info, test_input.as_bytes()).await;
                     results.push(result);
                 }
             
@@ -50,36 +47,37 @@ async fn main() {
                     if is_jsc_and_spidermonkey_result_same{
 
                         println!("⚠Warning!: V8 result is different with other engines!");
-                        println!("d8(V8):\n{}", results[0].stdout);
-                        std::fs::write("./issued_testcases/v8/testcase".to_string() + &i.to_string() + ".py", &test_input).unwrap();
+                        std::fs::write("./issues/v8/log".to_string() + &i.to_string() + ".txt", &results[0].stdout).unwrap();
+                        std::fs::write("./issues/v8/testcase".to_string() + &i.to_string() + ".py", &test_input).unwrap();
 
                     }else if is_v8_and_spidermonkey_result_same{
 
                         println!("⚠Warning!: JavascriptCore result is different with other engines!");
-                        println!("jsc(JavascriptCore):\n{}", results[1].stdout);
-                        std::fs::write("./issued_testcases/jsc/testcase".to_string() + &i.to_string() + ".py", &test_input).unwrap();
+                        std::fs::write("./issues/jsc/log".to_string() + &i.to_string() + ".txt", &results[1].stdout).unwrap();
+                        std::fs::write("./issues/jsc/testcase".to_string() + &i.to_string() + ".py", &test_input).unwrap();
 
                     }else if is_v8_and_jsc_result_same{
 
                         println!("⚠Warning!: SpiderMonkey result is different with other engines!");
-                        println!("JsShell(SpiderMonkey):\n{}", results[2].stdout);
-                        std::fs::write("./issued_testcases/spm/testcase".to_string() + &i.to_string() + ".py", &test_input).unwrap();
+                        std::fs::write("./issues/spm/log".to_string() + &i.to_string() + ".txt", &results[2].stdout).unwrap();
+                        std::fs::write("./issues/spm/testcase".to_string() + &i.to_string() + ".py", &test_input).unwrap();
 
                     }else{
 
                         println!("⚠Warning!: Each result of js engines different with other engines!");
-                        println!("d8(V8):\n{}", results[0].stdout);
-                        println!("jsc(JavascriptCore):\n{}", results[1].stdout);
-                        println!("JsShell(SpiderMonkey):\n{}", results[2].stdout);
-                        std::fs::write("./issued_testcases/unknown/testcase".to_string() + &i.to_string() + ".py", &test_input).unwrap();
+                        std::fs::write("./issues/unknown/log".to_string() + &i.to_string() + ".txt", 
+                        format!("d8(V8):\n{}\n", results[0].stdout)
+                        + &format!("jsc(JavascriptCore):\n{}\n", results[1].stdout)
+                        + &format!("JsShell(SpiderMonkey):\n{}\n", results[2].stdout)).unwrap();
+                        std::fs::write("./issues/unknown/testcase".to_string() + &i.to_string() + ".py", &test_input).unwrap();
 
                     }
 
                 }else if !is_native_wasm_same{
-                    println!("d8 stdout:\n{}", results[1].stdout);
-                    println!("native stdout:\n{}", results[3].stdout);
-                    println!("native stderr:\n{}", results[3].stderr);
-                    std::fs::write("./issued_testcases/native_vs_wasm/testcase".to_string() + &i.to_string() + ".py", &test_input).unwrap();
+                    std::fs::write("./issues/native_vs_wasm/log".to_string() + &i.to_string() + ".txt", 
+                    format!("d8(V8):\n{}\n", results[0].stdout)
+                    + &format!("Native:\n{}\n", results[3].stdout.clone() + &results[3].stderr)).unwrap();
+                    std::fs::write("./issues/native_vs_wasm/testcase".to_string() + &i.to_string() + ".py", &test_input).unwrap();
                     //omit_testcase_or_other_name("./issued_testcases/native_vs_wasm", &test_input, &LanguageType::Python);
                 }
                 cli_progress_bar.progress_one();

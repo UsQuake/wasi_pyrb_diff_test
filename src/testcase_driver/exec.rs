@@ -56,12 +56,11 @@ pub struct TestInfo{
     pub target_language:LanguageType
 }
 
-pub async fn execute_test<'a>(docker:&mut Docker, test_target:&TestInfo, testcase_path: &'a str)-> PrintResult{
+pub async fn execute_test<'a>(docker:&mut Docker, test_target:&TestInfo, testcase: &'a [u8])-> PrintResult{
     let container_name = "testcase_execution_container".to_string();
     let mut image_name = String::with_capacity(6);
     //["./jsc", "module-ready-wasi-py.js", "--", "none"]
     let mut execution_command: Vec<& 'a str> = Vec::with_capacity(3);
-    let host_testcase_path = testcase_path;
     let mut container_testcase_path: String = "/root/".to_string();
 
   match test_target.target_platform{
@@ -130,17 +129,9 @@ pub async fn execute_test<'a>(docker:&mut Docker, test_target:&TestInfo, testcas
             let container_creation_result = docker.containers().create(&opts).await;
             let container_id = container_creation_result.unwrap().id().clone();
             let container = docker.containers().get(container_id);
-           
 
 
-            let mut file = File::open(&host_testcase_path)
-            .unwrap();
-            let mut bytes = Vec::new();
-            file.read_to_end(&mut bytes)
-                .expect("Cannot read file on the localhost.");
-
-
-            if let Err(e) = container.copy_file_into(&container_testcase_path, &bytes).await
+            if let Err(e) = container.copy_file_into(&container_testcase_path, &testcase).await
             {
                 eprintln!("Error: {e}")
             }
