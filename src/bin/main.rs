@@ -12,34 +12,46 @@ async fn main() {
     let rand_seed = 17526186317047798642;
     let test_exec = exec_test(&mut docker, test_count, rand_seed, LanguageType::Python);
     tokio::select! {
-    _ = test_exec=>{},
-    _ = signal::ctrl_c()  => {
-        println!("Ctrl-C detected. End test. Bye!");
-    let opts = ContainerListOpts::builder()
+        _ = test_exec=>{},
+
+        _ = signal::ctrl_c()  => {
+            println!("Ctrl-C detected. End test. Bye!");
+            let opts = ContainerListOpts::builder()
                 .all(true)
                 .build();
 
-    if let Ok(containers) = docker.containers().list(&opts).await {
-        let cont_names:Vec<ContainerSummary> = containers.into_iter()
-        .filter(|container| container.clone().names.map(|n| n[0].to_owned()).unwrap_or_default() == "testcase_execution_container")
-        .collect();
-        if cont_names.len() == 1{
-            let container = docker.containers().get(cont_names[0].id.clone().unwrap());
-            let opts = ContainerStopOpts::builder()
-            .wait(std::time::Duration::from_secs(0))
-            .build();
-            if let Err(e) =  container.stop(&opts).await {
-                    eprintln!("Error: {e}");
-            };
-        
-            if let Err(e) = container.remove(&Default::default()).await {
-                    eprintln!("Error: {e}")
-            }
-                }
-            }
-            tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
-        }
+            match docker.containers().list(&opts).await {
 
+                Ok(containers)=>{
+
+                let cont_names:Vec<ContainerSummary> = containers.into_iter()
+                .filter(|container| {container.clone().names.map(|n| n[0].to_owned()).unwrap_or_default() == "/testcase_execution_container"})
+                .collect();
+
+                if cont_names.len() == 1{
+                    let container = docker.containers().get(cont_names[0].id.clone().unwrap());
+                    let opts = ContainerStopOpts::builder()
+                            .wait(std::time::Duration::from_secs(0))
+                            .build();
+                    if let Err(e) =  container.stop(&opts).await {
+                        eprintln!("Error: {e}");
+                    }
+        
+                    if let Err(e) = container.remove(&Default::default()).await {
+                        eprintln!("Error: {e}");
+                    }
+                
+                }
+
+                tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
+
+                },
+
+                Err(e) =>{eprintln!("{e}");}
+        
+            }
+
+        }    
     }
 }
 
