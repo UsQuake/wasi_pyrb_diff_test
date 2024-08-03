@@ -1,0 +1,15 @@
+Error: RuntimeError: call_indirect to a null table entry (evaluating 'instance.exports._start()')
+Stack: python.wasm.wasm-function[list_sort_impl]@[wasm code]
+python.wasm.wasm-function[PyList_Sort]@[wasm code]
+python.wasm.wasm-function[list_builtin_module_names]@[wasm code]
+python.wasm.wasm-function[_PySys_Create]@[wasm code]
+python.wasm.wasm-function[pycore_interp_init]@[wasm code]
+python.wasm.wasm-function[pyinit_config]@[wasm code]
+python.wasm.wasm-function[Py_InitializeFromConfig]@[wasm code]
+python.wasm.wasm-function[pymain_main]@[wasm code]
+python.wasm.wasm-function[Py_BytesMain]@[wasm code]
+python.wasm.wasm-function[main]@[wasm code]
+python.wasm.wasm-function[__main_void]@[wasm code]
+python.wasm.wasm-function[_start]@[wasm code]
+start@module-ready-wasi-py.js:498:32
+@module-ready-wasi-py.js:5225:15

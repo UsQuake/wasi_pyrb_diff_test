@@ -1,0 +1,43 @@
+[2, 4, 6, 8, 2, 7983, 8733225692]
+[2, 4, 6, 8, 2, 7983, 8733225692]
+[2, 4, 6, 8, 2, 7983, 8733225692]
+[2, 4, 6, 8, 2, 7983, 8733225692]
+[2, 4, 6, 8, 2, 7983, 8733225692]
+[2, 4, 6, 8, 2, 7983, 8733225692]
+[2, 4, 6, 8, 2, 7983, 8733225692]
+[3, 4, 58, 4, 1719, 431893329785]
+[3, 7, 4, 2, 452, 6963429943]
+[4, 1, 3, 46, 88822, 446842252261]
+[4, 1, 3, 46, 88822, 446842252261]
+[4, 1, 3, 46, 88822, 446842252261]
+[4, 1, 3, 46, 88822, 446842252261]
+[4, 1, 3, 46, 88822, 446842252261]
+[4, 1, 3, 46, 88822, 446842252261]
+-6.833333333333334
+[4, 1, 3, 46, 88822, 446842252261]
+[9, 6, 1, 1, 8, 974, 1215]
+-0.25
+-41
+[9, 6, 1, 1, 8, 974, 1215]
+[9, 6, 1, 1, 8, 974, 1215]
+[4, 1, 3, 46, 88822, 446842252261]
+-0.35
+-0.35
+-0.35
+-0.35
+-0.35
+Error: RuntimeError: Out of bounds memory access (evaluating 'instance.exports._start()')
+Stack: python.wasm.wasm-function[_PyDict_Next]@[wasm code]
+python.wasm.wasm-function[PyDict_Next]@[wasm code]
+python.wasm.wasm-function[_PyUnicode_ClearInterned]@[wasm code]
+python.wasm.wasm-function[finalize_interp_clear]@[wasm code]
+python.wasm.wasm-function[_Py_Finalize]@[wasm code]
+python.wasm.wasm-function[Py_FinalizeEx]@[wasm code]
+python.wasm.wasm-function[Py_RunMain]@[wasm code]
+python.wasm.wasm-function[pymain_main]@[wasm code]
+python.wasm.wasm-function[Py_BytesMain]@[wasm code]
+python.wasm.wasm-function[main]@[wasm code]
+python.wasm.wasm-function[__main_void]@[wasm code]
+python.wasm.wasm-function[_start]@[wasm code]
+start@module-ready-wasi-py.js:498:32
+@module-ready-wasi-py.js:5225:15

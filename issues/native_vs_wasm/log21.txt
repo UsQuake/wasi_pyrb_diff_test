@@ -1,0 +1,22 @@
+d8(V8):
+14.816666666666666
+0.0
+[3, 9, 6, 3, 48, 1593]
+[3, 2, 1, 6, 83, 751362, 3622351216]
+Traceback (most recent call last):
+  File [35m"/testcase.py"[0m, line [35m63[0m, in [35m<module>[0m
+    elif +8.19 == [31m-5.1 [0m[1;31m/[0m[31m var1[0m / var2:
+                  [31m~~~~~[0m[1;31m^[0m[31m~~~~~[0m
+[1;35mZeroDivisionError[0m: [35mdivision by zero[0m
+
+Native:
+14.816666666666666
+0.0
+[3, 9, 6, 3, 48, 1593]
+[3, 2, 1, 6, 83, 751362, 3622351216]
+Traceback (most recent call last):
+  File "/root/py-native-sandbox/./testcase.py", line 63, in <module>
+    elif +8.19 == -5.1 / var1 / var2:
+                  ~~~~~^~~~~~
+ZeroDivisionError: division by zero
+

@@ -1,0 +1,90 @@
+[7, 8, 8, 3, 3, 13, 429299]
+7.075
+1
+[1, 8, 27, 93, 5716, 22594424379]
+19.47
+-8
+[1, 8, 27, 93, 5716, 22594424379]
+19.47
+-8
+[1, 8, 27, 93, 5716, 22594424379]
+19.47
+-8
+[1, 8, 27, 93, 5716, 22594424379]
+19.47
+-8
+[1, 8, 27, 93, 5716, 22594424379]
+19.47
+-8
+[1, 8, 27, 93, 5716, 22594424379]
+19.47
+2
+[1, 8, 27, 93, 5716, 22594424379]
+19.47
+-8
+[1, 8, 27, 93, 5716, 22594424379]
+19.47
+-8
+[1, 8, 27, 93, 5716, 22594424379]
+19.47
+-8
+[1, 8, 27, 93, 5716, 22594424379]
+19.47
+-8
+[1, 8, 27, 93, 5716, 22594424379]
+19.47
+-8
+[1, 8, 27, 93, 5716, 22594424379]
+19.47
+10.6
+10.6
+10.6
+10.6
+10.6
+10.6
+-9.0
+7.075
+[8, 6, 56, 1867, 685158215]
+7.075
+7.075
+7.075
+6.5
+[2, 5, 19, 397, 2567794]
+7.075
+7.075
+7.075
+6.5
+[2, 5, 19, 397, 2567794]
+7.075
+7.075
+7.075
+6.5
+[2, 5, 19, 397, 2567794]
+7.075
+7.075
+7.075
+6.5
+[2, 5, 19, 397, 2567794]
+7.075
+7.075
+7.075
+6.5
+[2, 9, 65, 65, 353, 56476492]
+Error: RuntimeError: Out of bounds memory access (evaluating 'instance.exports._start()')
+Stack: python.wasm.wasm-function[_Py_dict_lookup]@[wasm code]
+python.wasm.wasm-function[insertdict]@[wasm code]
+python.wasm.wasm-function[setitem_take2_lock_held]@[wasm code]
+python.wasm.wasm-function[PyDict_SetItem]@[wasm code]
+python.wasm.wasm-function[_PyModule_ClearDict]@[wasm code]
+python.wasm.wasm-function[_PyModule_Clear]@[wasm code]
+python.wasm.wasm-function[finalize_modules]@[wasm code]
+python.wasm.wasm-function[_Py_Finalize]@[wasm code]
+python.wasm.wasm-function[Py_FinalizeEx]@[wasm code]
+python.wasm.wasm-function[Py_RunMain]@[wasm code]
+python.wasm.wasm-function[pymain_main]@[wasm code]
+python.wasm.wasm-function[Py_BytesMain]@[wasm code]
+python.wasm.wasm-function[main]@[wasm code]
+python.wasm.wasm-function[__main_void]@[wasm code]
+python.wasm.wasm-function[_start]@[wasm code]
+start@module-ready-wasi-py.js:498:32
+@module-ready-wasi-py.js:5225:15

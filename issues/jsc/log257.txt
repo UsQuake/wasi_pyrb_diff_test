@@ -1,47 +1,182 @@
-Error: RuntimeError: Out of bounds memory access (evaluating 'instance.exports._start()')
-Stack: python.wasm.wasm-function[_PyPegen_expect_token]@[wasm code]
-python.wasm.wasm-function[_tmp_12_rule]@[wasm code]
-python.wasm.wasm-function[simple_stmt_rule]@[wasm code]
-python.wasm.wasm-function[simple_stmts_rule]@[wasm code]
-python.wasm.wasm-function[statements_rule]@[wasm code]
-python.wasm.wasm-function[block_rule]@[wasm code]
-python.wasm.wasm-function[compound_stmt_rule]@[wasm code]
-python.wasm.wasm-function[statements_rule]@[wasm code]
-python.wasm.wasm-function[block_rule]@[wasm code]
-python.wasm.wasm-function[function_def_raw_rule]@[wasm code]
-python.wasm.wasm-function[compound_stmt_rule]@[wasm code]
-python.wasm.wasm-function[statements_rule]@[wasm code]
-python.wasm.wasm-function[_PyPegen_parse]@[wasm code]
-python.wasm.wasm-function[_PyPegen_run_parser]@[wasm code]
-python.wasm.wasm-function[_PyPegen_run_parser_from_string]@[wasm code]
-python.wasm.wasm-function[_PyParser_ASTFromString]@[wasm code]
-python.wasm.wasm-function[Py_CompileStringObject]@[wasm code]
-python.wasm.wasm-function[builtin_compile]@[wasm code]
-python.wasm.wasm-function[cfunction_vectorcall_FASTCALL_KEYWORDS]@[wasm code]
-python.wasm.wasm-function[_PyVectorcall_Call]@[wasm code]
-python.wasm.wasm-function[_PyObject_Call]@[wasm code]
-python.wasm.wasm-function[PyObject_Call]@[wasm code]
-python.wasm.wasm-function[_PyEval_EvalFrameDefault]@[wasm code]
-python.wasm.wasm-function[_PyEval_Vector]@[wasm code]
-python.wasm.wasm-function[_PyFunction_Vectorcall]@[wasm code]
-python.wasm.wasm-function[object_vacall]@[wasm code]
-python.wasm.wasm-function[PyObject_CallMethodObjArgs]@[wasm code]
-python.wasm.wasm-function[PyImport_ImportModuleLevelObject]@[wasm code]
-python.wasm.wasm-function[builtin___import__]@[wasm code]
-python.wasm.wasm-function[cfunction_vectorcall_FASTCALL_KEYWORDS]@[wasm code]
-python.wasm.wasm-function[_PyObject_CallFunctionVa]@[wasm code]
-python.wasm.wasm-function[PyObject_CallFunction]@[wasm code]
-python.wasm.wasm-function[PyImport_Import]@[wasm code]
-python.wasm.wasm-function[PyImport_ImportModule]@[wasm code]
-python.wasm.wasm-function[_PyCodec_InitRegistry]@[wasm code]
-python.wasm.wasm-function[_PyUnicode_InitEncodings]@[wasm code]
-python.wasm.wasm-function[init_interp_main]@[wasm code]
-python.wasm.wasm-function[pyinit_main]@[wasm code]
-python.wasm.wasm-function[Py_InitializeFromConfig]@[wasm code]
-python.wasm.wasm-function[pymain_main]@[wasm code]
-python.wasm.wasm-function[Py_BytesMain]@[wasm code]
-python.wasm.wasm-function[main]@[wasm code]
-python.wasm.wasm-function[__main_void]@[wasm code]
-python.wasm.wasm-function[_start]@[wasm code]
-start@module-ready-wasi-py.js:498:32
-@module-ready-wasi-py.js:5225:15
+1
+2
+3
+4
+5
+6
+7
+[8, 55, 758, 6679282, 3846824538456111]
+-20.5
+20.4
+[6, 7, 7, 38644, 7843, 113485]
+[5, 8, 692, 56, 9759697]
+[5, 8, 692, 56, 9759697]
+[5, 8, 692, 56, 9759697]
+[5, 8, 692, 56, 9759697]
+[5, 8, 692, 56, 9759697]
+[5, 8, 692, 56, 9759697]
+-21.5
+[5, 8, 692, 56, 9759697]
+[5, 8, 692, 56, 9759697]
+[2, 9, 88618, 6263694]
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+#   clear[1] _inputhook
+#   clear[1] _is_inputhook_installed
+#   clear[1] _create_environ
+#   clear[1] _have_functions
+#   clear[2] __name__
+#   clear[2] __doc__
+#   clear[2] __package__
+#   clear[2] __loader__
+#   clear[2] __spec__
+#   clear[2] stat
+#   clear[2] access
+#   clear[2] chdir
+#   clear[2] chmod
+#   clear[2] getcwd
+#   clear[2] getcwdb
+#   clear[2] link
+#   clear[2] listdir
+#   clear[2] lstat
+#   clear[2] mkdir
+#   clear[2] readlink
+#   clear[2] rename
+#   clear[2] replace
+#   clear[2] rmdir
+#   clear[2] symlink
+#   clear[2] uname
+#   clear[2] unlink
+#   clear[2] remove
+#   clear[2] utime
+#   clear[2] times
+#   clear[2] sched_yield
+#   clear[2] getpid
+#   clear[2] open
+#   clear[2] close
+#   clear[2] closerange
+#   clear[2] device_encoding
+#   clear[2] dup
+#   clear[2] lseek
+#   clear[2] read
+#   clear[2] pread
+#   clear[2] write
+#   clear[2] pwrite
+#   clear[2] fstat
+#   clear[2] isatty
+#   clear[2] ftruncate
+#   clear[2] truncate
+#   clear[2] posix_fadvise
+#   clear[2] putenv
+#   clear[2] unsetenv
+#   clear[2] strerror
+#   clear[2] fsync
+#   clear[2] fdatasync
+#   clear[2] confstr
+#   clear[2] sysconf
+#   clear[2] fpathconf
+#   clear[2] pathconf
+#   clear[2] abort
+#   clear[2] urandom
+#   clear[2] cpu_count
+#   clear[2] get_inheritable
+#   clear[2] set_inheritable
+#   clear[2] get_blocking
+#   clear[2] set_blocking
+#   clear[2] scandir
+#   clear[2] fspath
+#   clear[2] environ
+#   clear[2] F_OK
+#   clear[2] R_OK
+#   clear[2] W_OK
+#   clear[2] X_OK
+#   clear[2] NGROUPS_MAX
+#   clear[2] O_RDONLY
+#   clear[2] O_WRONLY
+#   clear[2] O_RDWR
+#   clear[2] O_NONBLOCK
+#   clear[2] O_APPEND
+#   clear[2] O_DSYNC
+#   clear[2] O_RSYNC
+#   clear[2] O_SYNC
+#   clear[2] O_NOCTTY
+#   clear[2] O_CREAT
+#   clear[2] O_EXCL
+#   clear[2] O_TRUNC
+#   clear[2] O_EXEC
+#   clear[2] O_SEARCH
+#   clear[2] O_TTY_INIT
+#   clear[2] O_CLOEXEC
+#   clear[2] O_ACCMODE
+#   clear[2] O_DIRECTORY
+#   clear[2] O_NOFOLLOW
+#   clear[2] EX_OK
+#   clear[2] EX_USAGE
+#   clear[2] EX_DATAERR
+#   clear[2] EX_NOINPUT
+#   clear[2] EX_NOUSER
+#   clear[2] EX_NOHOST
+#   clear[2] EX_UNAVAILABLE
+#   clear[2] EX_SOFTWARE
+#   clear[2] EX_OSERR
+#   clear[2] EX_OSFILE
+#   clear[2] EX_CANTCREAT
+#   clear[2] EX_IOERR
+#   clear[2] EX_TEMPFAIL
+#   clear[2] EX_PROTOCOL
+#   clear[2] EX_NOPERM
+#   clear[2] EX_CONFIG
+#   clear[2] POSIX_FADV_NORMAL
+#   clear[2] POSIX_FADV_SEQUENTIAL
+#   clear[2] POSIX_FADV_RANDOM
+#   clear[2] POSIX_FADV_NOREUSE
+#   clear[2] POSIX_FADV_WILLNEED
+#   clear[2] POSIX_FADV_DONTNEED
+#   clear[2] F_LOCK
+#   clear[2] F_TLOCK
+#   clear[2] F_ULOCK
+#   clear[2] F_TEST
+#   clear[2] RTLD_LAZY
+#   clear[2] RTLD_NOW
+#   clear[2] RTLD_GLOBAL
+#   clear[2] RTLD_LOCAL
+#   clear[2] RTLD_NODELETE
+#   clear[2] RTLD_NOLOAD
+#   clear[2] pathconf_names
+#   clear[2] confstr_names
+#   clear[2] sysconf_names
+#   clear[2] error
+#   clear[2] stat_result
+#   clear[2] statvfs_result
+#   clear[2] terminal_size
+#   clear[2] DirEntry
+#   clear[2] times_result
+#   clear[2] uname_result

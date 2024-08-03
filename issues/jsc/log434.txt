@@ -1,0 +1,23 @@
+Error: RuntimeError: Out of bounds memory access (evaluating 'instance.exports._start()')
+Stack: python.wasm.wasm-function[dictresize]@[wasm code]
+python.wasm.wasm-function[insert_combined_dict]@[wasm code]
+python.wasm.wasm-function[dict_setdefault_ref_lock_held]@[wasm code]
+python.wasm.wasm-function[PyDict_SetDefaultRef]@[wasm code]
+python.wasm.wasm-function[intern_common]@[wasm code]
+python.wasm.wasm-function[PyUnicode_InternFromString]@[wasm code]
+python.wasm.wasm-function[PyDescr_NewMethod]@[wasm code]
+python.wasm.wasm-function[type_ready]@[wasm code]
+python.wasm.wasm-function[init_static_type]@[wasm code]
+python.wasm.wasm-function[_PyStaticType_InitBuiltin]@[wasm code]
+python.wasm.wasm-function[_PyTypes_InitTypes]@[wasm code]
+python.wasm.wasm-function[pycore_init_types]@[wasm code]
+python.wasm.wasm-function[pycore_interp_init]@[wasm code]
+python.wasm.wasm-function[pyinit_config]@[wasm code]
+python.wasm.wasm-function[Py_InitializeFromConfig]@[wasm code]
+python.wasm.wasm-function[pymain_main]@[wasm code]
+python.wasm.wasm-function[Py_BytesMain]@[wasm code]
+python.wasm.wasm-function[main]@[wasm code]
+python.wasm.wasm-function[__main_void]@[wasm code]
+python.wasm.wasm-function[_start]@[wasm code]
+start@module-ready-wasi-py.js:498:32
+@module-ready-wasi-py.js:5225:15

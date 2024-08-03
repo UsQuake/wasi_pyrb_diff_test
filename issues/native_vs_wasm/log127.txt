@@ -1,0 +1,14 @@
+d8(V8):
+Traceback (most recent call last):
+  File [35m"/testcase.py"[0m, line [35m18[0m, in [35m<module>[0m
+    if -684 * var1 * var0 <= [31mvar0 * var1 * var0 [0m[1;31m/[0m[31m var0[0m:
+                             [31m~~~~~~~~~~~~~~~~~~~[0m[1;31m^[0m[31m~~~~~[0m
+[1;35mZeroDivisionError[0m: [35mdivision by zero[0m
+
+Native:
+Traceback (most recent call last):
+  File "/root/py-native-sandbox/./testcase.py", line 18, in <module>
+    if -684 * var1 * var0 <= var0 * var1 * var0 / var0:
+                             ~~~~~~~~~~~~~~~~~~~^~~~~~
+ZeroDivisionError: division by zero
+

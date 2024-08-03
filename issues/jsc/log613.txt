@@ -1,0 +1,19 @@
+Error: RuntimeError: Out of bounds memory access (evaluating 'instance.exports._start()')
+Stack: python.wasm.wasm-function[builtin___build_class__]@[wasm code]
+python.wasm.wasm-function[cfunction_vectorcall_FASTCALL_KEYWORDS]@[wasm code]
+python.wasm.wasm-function[PyObject_Vectorcall]@[wasm code]
+python.wasm.wasm-function[_PyEval_EvalFrameDefault]@[wasm code]
+python.wasm.wasm-function[PyEval_EvalCode]@[wasm code]
+python.wasm.wasm-function[exec_code_in_module]@[wasm code]
+python.wasm.wasm-function[PyImport_ImportFrozenModuleObject]@[wasm code]
+python.wasm.wasm-function[_PyImport_InitCore]@[wasm code]
+python.wasm.wasm-function[pycore_interp_init]@[wasm code]
+python.wasm.wasm-function[pyinit_config]@[wasm code]
+python.wasm.wasm-function[Py_InitializeFromConfig]@[wasm code]
+python.wasm.wasm-function[pymain_main]@[wasm code]
+python.wasm.wasm-function[Py_BytesMain]@[wasm code]
+python.wasm.wasm-function[main]@[wasm code]
+python.wasm.wasm-function[__main_void]@[wasm code]
+python.wasm.wasm-function[_start]@[wasm code]
+start@module-ready-wasi-py.js:498:32
+@module-ready-wasi-py.js:5225:15

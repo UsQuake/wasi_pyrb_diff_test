@@ -1,0 +1,5 @@
+Fatal Python error: memory allocation failed
+Python runtime state: core initialized
+
+Current thread 0x00000000 (most recent call first):
+  <no Python frame>

@@ -1,21 +1,6 @@
-Fatal Python error: Failed to import encodings module
-Python runtime state: core initialized
-Traceback (most recent call last):
-  File "<frozen importlib._bootstrap_external>", line 1514, in _path_importer_cache
-KeyError: '/Lib'
+Fatal Python error: _PyImport_InitCore: failed to initialize importlib
+Python runtime state: preinitialized
+ImportError: Frozen object named '_frozen_importlib' is invalid
 
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1322, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 1262, in _find_spec
-  File "<frozen importlib._bootstrap_external>", line 1557, in find_spec
-  File "<frozen importlib._bootstrap_external>", line 1529, in _get_spec
-  File "<frozen importlib._bootstrap_external>", line 1516, in _path_importer_cache
-  File "<frozen importlib._bootstrap_external>", line 1492, in _path_hooks
-  File "<frozen importlib._bootstrap_external>", line 1716, in path_hook_for_FileFinder
-  File "<frozen importlib._bootstrap_external>", line 173, in _path_isdir
-  File "<frozen importlib._bootstrap_external>", line 158, in _path_is_mode_type
-  File "<frozen importlib._bootstrap_external>", line 152, in _path_stat
-SystemError: error return without exception set
+Current thread 0x00000000 (most recent call first):
+  <no Python frame>

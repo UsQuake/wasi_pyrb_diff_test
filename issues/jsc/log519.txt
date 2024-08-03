@@ -1,0 +1,27 @@
+-5.2
+[3, 61, 473, 393, 54655]
+Error: RuntimeError: Out of bounds memory access (evaluating 'instance.exports._start()')
+Stack: python.wasm.wasm-function[dlfree]@[wasm code]
+python.wasm.wasm-function[free]@[wasm code]
+python.wasm.wasm-function[_PyMem_RawFree]@[wasm code]
+python.wasm.wasm-function[PyMem_Free]@[wasm code]
+python.wasm.wasm-function[float_repr]@[wasm code]
+python.wasm.wasm-function[object_str]@[wasm code]
+python.wasm.wasm-function[PyObject_Str]@[wasm code]
+python.wasm.wasm-function[PyFile_WriteObject]@[wasm code]
+python.wasm.wasm-function[builtin_print]@[wasm code]
+python.wasm.wasm-function[_PyEval_EvalFrameDefault]@[wasm code]
+python.wasm.wasm-function[PyEval_EvalCode]@[wasm code]
+python.wasm.wasm-function[run_eval_code_obj]@[wasm code]
+python.wasm.wasm-function[run_mod]@[wasm code]
+python.wasm.wasm-function[_PyRun_SimpleFileObject]@[wasm code]
+python.wasm.wasm-function[_PyRun_AnyFileObject]@[wasm code]
+python.wasm.wasm-function[pymain_run_file]@[wasm code]
+python.wasm.wasm-function[Py_RunMain]@[wasm code]
+python.wasm.wasm-function[pymain_main]@[wasm code]
+python.wasm.wasm-function[Py_BytesMain]@[wasm code]
+python.wasm.wasm-function[main]@[wasm code]
+python.wasm.wasm-function[__main_void]@[wasm code]
+python.wasm.wasm-function[_start]@[wasm code]
+start@module-ready-wasi-py.js:498:32
+@module-ready-wasi-py.js:5225:15

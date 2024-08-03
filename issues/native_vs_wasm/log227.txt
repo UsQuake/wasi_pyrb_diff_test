@@ -6,13 +6,13 @@ d8(V8):
 [9, 4, 6, 8, 4824, 337871]
 [4, 9, 6, 47896, 3824214]
 9
-1
-2
-3
-4
-5
-9
 14.0
+14.0
+14.0
+14.0
+14.0
+14.0
+9
 Traceback (most recent call last):
   File [35m"/testcase.py"[0m, line [35m71[0m, in [35m<module>[0m
     var3 = [31m8 [0m[1;31m/[0m[31m (-2 + 2)[0m / +6 + 6
@@ -27,13 +27,13 @@ Native:
 [9, 4, 6, 8, 4824, 337871]
 [4, 9, 6, 47896, 3824214]
 9
-1
-2
-3
-4
-5
-9
 14.0
+14.0
+14.0
+14.0
+14.0
+14.0
+9
 Traceback (most recent call last):
   File "/root/py-native-sandbox/./testcase.py", line 71, in <module>
     var3 = 8 / (-2 + 2) / +6 + 6

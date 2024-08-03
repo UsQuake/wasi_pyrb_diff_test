@@ -1,0 +1,16 @@
+Error: RuntimeError: Out of bounds memory access (evaluating 'instance.exports._start()')
+Stack: python.wasm.wasm-function[PyObject_SetAttr]@[wasm code]
+python.wasm.wasm-function[PyObject_SetAttrString]@[wasm code]
+python.wasm.wasm-function[_add_methods_to_object]@[wasm code]
+python.wasm.wasm-function[_PyModule_CreateInitialized]@[wasm code]
+python.wasm.wasm-function[_PySys_Create]@[wasm code]
+python.wasm.wasm-function[pycore_interp_init]@[wasm code]
+python.wasm.wasm-function[pyinit_config]@[wasm code]
+python.wasm.wasm-function[Py_InitializeFromConfig]@[wasm code]
+python.wasm.wasm-function[pymain_main]@[wasm code]
+python.wasm.wasm-function[Py_BytesMain]@[wasm code]
+python.wasm.wasm-function[main]@[wasm code]
+python.wasm.wasm-function[__main_void]@[wasm code]
+python.wasm.wasm-function[_start]@[wasm code]
+start@module-ready-wasi-py.js:498:32
+@module-ready-wasi-py.js:5225:15

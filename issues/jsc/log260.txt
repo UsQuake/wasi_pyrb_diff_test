@@ -1,0 +1,29 @@
+-3.583333333333333
+-3.583333333333333
+[8, 127, 8663, 782]
+[3, 7, 751665, 71951, 391252]
+-0.8
+22.4
+-60
+-12.620000000000001
+[3, 7, 751665, 71951, 391252]
+[4, 93, 41, 6872, 56679745798]
+[3, 9, 8893, 22, 449397594]
+-58.75
+[5, 6, 6, 915, 27839387]
+-0.8
+Error: RuntimeError: Out of bounds memory access (evaluating 'instance.exports._start()')
+Stack: python.wasm.wasm-function[_PyDict_MaybeUntrack]@[wasm code]
+python.wasm.wasm-function[gc_collect_region]@[wasm code]
+python.wasm.wasm-function[_PyGC_Collect]@[wasm code]
+python.wasm.wasm-function[PyGC_Collect]@[wasm code]
+python.wasm.wasm-function[_Py_Finalize]@[wasm code]
+python.wasm.wasm-function[Py_FinalizeEx]@[wasm code]
+python.wasm.wasm-function[Py_RunMain]@[wasm code]
+python.wasm.wasm-function[pymain_main]@[wasm code]
+python.wasm.wasm-function[Py_BytesMain]@[wasm code]
+python.wasm.wasm-function[main]@[wasm code]
+python.wasm.wasm-function[__main_void]@[wasm code]
+python.wasm.wasm-function[_start]@[wasm code]
+start@module-ready-wasi-py.js:498:32
+@module-ready-wasi-py.js:5225:15

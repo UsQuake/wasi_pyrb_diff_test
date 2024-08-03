@@ -1,0 +1,6 @@
+Fatal Python error: Failed to import encodings module
+Python runtime state: core initialized
+[1;35mSystemError[0m: [35mInvalid stack effect for opcode=7680, arg=0[0m
+
+Current thread 0x00000000 (most recent call first):
+  <no Python frame>

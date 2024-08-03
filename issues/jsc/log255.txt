@@ -1,0 +1,30 @@
+Python path configuration:
+  PYTHONHOME = (not set)
+  PYTHONPATH = '/lib.wasi-wasm32-3.14'
+  program name = 'python'
+  isolated = 0
+  environment = 1
+  user site = 1
+  safe_path = 0
+  import site = 1
+  is in build tree = 1
+  stdlib dir = '/Lib'
+  sys.path[0] = (not set)
+  sys._base_executable = ''
+  sys.base_prefix = '/usr/local'
+  sys.base_exec_prefix = '/usr/local'
+  sys.platlibdir = 'lib'
+  sys.executable = ''
+  sys.prefix = '/usr/local'
+  sys.exec_prefix = '/usr/local'
+  sys.path = [
+    '/lib.wasi-wasm32-3.14',
+    '/usr/local/lib/python314.zip',
+    '/Lib',
+    '/lib/python3.14/lib-dynload',
+  ]
+Fatal Python error: init_fs_encoding: failed to get the Python codec of the filesystem encoding
+Python runtime state: core initialized
+Traceback (most recent call last):
+  File "/Lib/encodings/__init__.py", line 74, in search_function
+SystemError: no locals found

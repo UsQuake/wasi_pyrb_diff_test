@@ -1,0 +1,22 @@
+d8(V8):
+[4, 99, 367, 5424739483]
+[4, 99, 367, 5424739483]
+[4, 99, 367, 5424739483]
+[4, 99, 367, 5424739483]
+Traceback (most recent call last):
+  File [35m"/testcase.py"[0m, line [35m25[0m, in [35m<module>[0m
+    var0 = [31m5 [0m[1;31m/[0m[31m (9 - 9)[0m + +8 * +6 + +1
+           [31m~~[0m[1;31m^[0m[31m~~~~~~~~[0m
+[1;35mZeroDivisionError[0m: [35mdivision by zero[0m
+
+Native:
+[4, 99, 367, 5424739483]
+[4, 99, 367, 5424739483]
+[4, 99, 367, 5424739483]
+[4, 99, 367, 5424739483]
+Traceback (most recent call last):
+  File "/root/py-native-sandbox/./testcase.py", line 25, in <module>
+    var0 = 5 / (9 - 9) + +8 * +6 + +1
+           ~~^~~~~~~~~
+ZeroDivisionError: division by zero
+

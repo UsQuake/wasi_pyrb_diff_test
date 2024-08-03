@@ -1,0 +1,20 @@
+13.600000000000001
+13.600000000000001
+13.600000000000001
+[5, 584, 47, 327389, 48993333464187]
+-16.975
+[2, 57, 224, 333331]
+Error: RuntimeError: Out of bounds memory access (evaluating 'instance.exports._start()')
+Stack: python.wasm.wasm-function[PyObject_RichCompare]@[wasm code]
+python.wasm.wasm-function[PyObject_RichCompareBool]@[wasm code]
+python.wasm.wasm-function[_PySignal_Fini]@[wasm code]
+python.wasm.wasm-function[_Py_Finalize]@[wasm code]
+python.wasm.wasm-function[Py_FinalizeEx]@[wasm code]
+python.wasm.wasm-function[Py_RunMain]@[wasm code]
+python.wasm.wasm-function[pymain_main]@[wasm code]
+python.wasm.wasm-function[Py_BytesMain]@[wasm code]
+python.wasm.wasm-function[main]@[wasm code]
+python.wasm.wasm-function[__main_void]@[wasm code]
+python.wasm.wasm-function[_start]@[wasm code]
+start@module-ready-wasi-py.js:498:32
+@module-ready-wasi-py.js:5225:15

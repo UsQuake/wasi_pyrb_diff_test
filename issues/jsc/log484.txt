@@ -1,0 +1,5 @@
+Fatal Python error: _PyTypes_InitTypes: Can't initialize builtin type
+Python runtime state: preinitialized
+
+Current thread 0x00000000 (most recent call first):
+  <no Python frame>
