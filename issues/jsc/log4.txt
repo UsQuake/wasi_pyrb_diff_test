@@ -1,0 +1,28 @@
+[9, 7, 2, 6, 3721, 6129]
+[6, 228, 8, 5152, 831593]
+[6, 228, 8, 5152, 831593]
+[5, 3, 1, 523, 1461942, 32373843751]
+[1, 9, 7, 529, 79632983]
+[2, 6, 91, 94212, 63926]
+-3.325
+-14.222222222222221
+-14.222222222222221
+-14.222222222222221
+-14.222222222222221
+-14.222222222222221
+-14.222222222222221
+0.9175
+-3.325
+Error: RuntimeError: Out of bounds memory access (evaluating 'instance.exports._start()')
+Stack: python.wasm.wasm-function[PyList_Append]@[wasm code]
+python.wasm.wasm-function[finalize_modules]@[wasm code]
+python.wasm.wasm-function[_Py_Finalize]@[wasm code]
+python.wasm.wasm-function[Py_FinalizeEx]@[wasm code]
+python.wasm.wasm-function[Py_RunMain]@[wasm code]
+python.wasm.wasm-function[pymain_main]@[wasm code]
+python.wasm.wasm-function[Py_BytesMain]@[wasm code]
+python.wasm.wasm-function[main]@[wasm code]
+python.wasm.wasm-function[__main_void]@[wasm code]
+python.wasm.wasm-function[_start]@[wasm code]
+start@module-ready-wasi-py.js:498:32
+@module-ready-wasi-py.js:5225:15

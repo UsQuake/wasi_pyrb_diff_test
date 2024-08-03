@@ -1,0 +1,26 @@
+d8(V8):
+64
+[5, 2, 361, 6443161, 78925]
+[5, 2, 361, 6443161, 78925]
+-68
+[5, 2, 361, 6443161, 78925]
+-68
+Traceback (most recent call last):
+  File [35m"/testcase.py"[0m, line [35m37[0m, in [35m<module>[0m
+    if [31m+9 [0m[1;31m/[0m[31m (var0 - var0)[0m / var0 / var0 * var0 != 19.3 * var0:
+       [31m~~~[0m[1;31m^[0m[31m~~~~~~~~~~~~~~[0m
+[1;35mZeroDivisionError[0m: [35mdivision by zero[0m
+
+Native:
+64
+[5, 2, 361, 6443161, 78925]
+[5, 2, 361, 6443161, 78925]
+-68
+[5, 2, 361, 6443161, 78925]
+-68
+Traceback (most recent call last):
+  File "/root/py-native-sandbox/./testcase.py", line 37, in <module>
+    if +9 / (var0 - var0) / var0 / var0 * var0 != 19.3 * var0:
+       ~~~^~~~~~~~~~~~~~~
+ZeroDivisionError: division by zero
+

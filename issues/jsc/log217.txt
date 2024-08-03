@@ -1,0 +1,6 @@
+Fatal Python error: _PySys_InitCore: can't initialize sys module
+Python runtime state: preinitialized
+SystemError: Type does not define the tp_name field.
+
+Current thread 0x00000000 (most recent call first):
+  <no Python frame>

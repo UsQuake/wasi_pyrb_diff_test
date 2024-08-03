@@ -1,0 +1,20 @@
+d8(V8):
+-122
+[4, 8, 8, 99, 9535, 642632]
+[4, 8, 8, 99, 9535, 642632]
+Traceback (most recent call last):
+  File [35m"/testcase.py"[0m, line [35m51[0m, in [35m<module>[0m
+    if 2.74 * 2 > [31mvar0 / -1 / +1 [0m[1;31m/[0m[31m (var0 - var0)[0m:
+                  [31m~~~~~~~~~~~~~~~[0m[1;31m^[0m[31m~~~~~~~~~~~~~~[0m
+[1;35mZeroDivisionError[0m: [35mdivision by zero[0m
+
+Native:
+-122
+[4, 8, 8, 99, 9535, 642632]
+[4, 8, 8, 99, 9535, 642632]
+Traceback (most recent call last):
+  File "/root/py-native-sandbox/./testcase.py", line 51, in <module>
+    if 2.74 * 2 > var0 / -1 / +1 / (var0 - var0):
+                  ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+ZeroDivisionError: division by zero
+

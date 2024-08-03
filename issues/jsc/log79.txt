@@ -1,0 +1,5 @@
+Fatal Python error: _PySys_Create: failed to create a module object
+Python runtime state: preinitialized
+
+Current thread 0x00000000 (most recent call first):
+  <no Python frame>

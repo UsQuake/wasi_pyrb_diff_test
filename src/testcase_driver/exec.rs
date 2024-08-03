@@ -1,7 +1,8 @@
 use docker_api::opts::{ContainerCreateOpts,ContainerRestartOpts, ContainerStopOpts, ExecCreateOpts};
 use docker_api::{conn::TtyChunk, Docker};
 use futures::StreamExt;
-use std::{str, fs::File, io::Read};
+use tokio::time::{sleep, Duration};
+use std::str;
 
 pub static PYTHON_TEST_INFOS:& 'static [TestInfo;4] =  &[
     TestInfo{
@@ -147,33 +148,53 @@ pub async fn execute_test<'a>(docker:&mut Docker, test_target:&TestInfo, testcas
                 .attach_stdout(true)
                 .attach_stderr(true)
                 .build();
-
-            let mut stream = container
-               .exec(&options, &Default::default())
-               .await
-               .expect("exec stream");
-            
             let mut stdout = String::with_capacity(32);
             let mut stderr = String::with_capacity(32);
-            
-            while let Some(exec_result) = stream.next().await {
-              match exec_result {
-                Ok(chunk) => {
-                    match chunk {
-                        TtyChunk::StdOut(bytes) => {
-                            stdout.push_str(str::from_utf8(&bytes).unwrap_or_default())
+            let opt = Default::default();
+            tokio::select! {
+                exec_res =  container.exec(&options, &opt)=>{
+                    match exec_res{
+                        Err(e) => {eprintln!("{e}");},
+                        Ok(mut stream) => {
+                            loop{
+                                tokio::select! {
+                                    stream_or_none = stream.next()=> {
+                                        if let Some(exec_result) = stream_or_none{
+                                            match exec_result {
+                                                Ok(chunk) => {
+                                                    match chunk {
+                                                        TtyChunk::StdOut(bytes) => {
+                                                            stdout.push_str(str::from_utf8(&bytes).unwrap_or_default())
+                                                        }
+                                                        TtyChunk::StdErr(bytes) => {
+                                                            stderr.push_str(str::from_utf8(&bytes).unwrap_or_default())
+                                                        }
+                                                        TtyChunk::StdIn(_) => {break;},
+                                                    }
+                                                },
+                                                Err(_) => {break;},
+                                               }
+                                        }else{
+                                            break;
+                                        }
+                                        //Request completed within 10 seconds.;
+                                    }
+                                    _ = sleep(Duration::from_secs(10)) => {
+                                        println!("10 seconds elapsed. skiping.");
+                                        break;
+                                }
+                                }
+                            }
                         }
-                        TtyChunk::StdErr(bytes) => {
-                            stderr.push_str(str::from_utf8(&bytes).unwrap_or_default())
-                        }
-                        TtyChunk::StdIn(_) => unreachable!(),
-                    }
-                
-
+                    } 
+              
+                   
                 },
-                Err(e) => eprintln!("Error: {e}"),
-               }
+                _ = sleep(Duration::from_secs(10)) => {
+                    println!("10 seconds elapsed. skiping.");
+                }
             }
+            
 
             let opts = ContainerStopOpts::builder()
                 .wait(std::time::Duration::from_secs(0));

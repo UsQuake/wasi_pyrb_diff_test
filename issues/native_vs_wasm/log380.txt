@@ -1,0 +1,30 @@
+d8(V8):
+-11.5
+[9, 9, 4, 51679, 1569]
+[9, 9, 4, 51679, 1569]
+[9, 9, 4, 51679, 1569]
+[9, 9, 4, 51679, 1569]
+[9, 9, 4, 51679, 1569]
+[9, 9, 4, 51679, 1569]
+[9, 9, 4, 51679, 1569]
+Traceback (most recent call last):
+  File [35m"/testcase.py"[0m, line [35m50[0m, in [35m<module>[0m
+    if [31m788.96 [0m[1;31m/[0m[31m var0[0m / var1 * var0 >= 56 * -2 / var1:
+       [31m~~~~~~~[0m[1;31m^[0m[31m~~~~~[0m
+[1;35mZeroDivisionError[0m: [35mdivision by zero[0m
+
+Native:
+-11.5
+[9, 9, 4, 51679, 1569]
+[9, 9, 4, 51679, 1569]
+[9, 9, 4, 51679, 1569]
+[9, 9, 4, 51679, 1569]
+[9, 9, 4, 51679, 1569]
+[9, 9, 4, 51679, 1569]
+[9, 9, 4, 51679, 1569]
+Traceback (most recent call last):
+  File "/root/py-native-sandbox/./testcase.py", line 50, in <module>
+    if 788.96 / var0 / var1 * var0 >= 56 * -2 / var1:
+       ~~~~~~~^~~~~~
+ZeroDivisionError: division by zero
+

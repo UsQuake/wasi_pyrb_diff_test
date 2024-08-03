@@ -1,0 +1,26 @@
+Fatal Python error: Failed to import encodings module
+Python runtime state: core initialized
+Traceback (most recent call last):
+  File "<frozen importlib._bootstrap_external>", line 1514, in _path_importer_cache
+KeyError: '/usr/local/lib/python314.zip'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen zipimport>", line 79, in __init__
+  File "<frozen importlib._bootstrap_external>", line 152, in _path_stat
+FileNotFoundError: [Errno 44] No such file or directory: '/usr'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1322, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1262, in _find_spec
+  File "<frozen importlib._bootstrap_external>", line 1557, in find_spec
+  File "<frozen importlib._bootstrap_external>", line 1529, in _get_spec
+  File "<frozen importlib._bootstrap_external>", line 1516, in _path_importer_cache
+  File "<frozen importlib._bootstrap_external>", line 1492, in _path_hooks
+  File "<frozen zipimport>", line 83, in __init__
+  File "<frozen importlib._bootstrap_external>", line 142, in _path_split
+TypeError: slice indices must be integers or None or have an __index__ method

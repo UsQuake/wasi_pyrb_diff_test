@@ -1,0 +1,29 @@
+[1, 9, 3, 8, 89, 18, 49865661]
+[1, 9, 3, 8, 89, 18, 49865661]
+[1, 9, 3, 8, 89, 18, 49865661]
+[1, 9, 3, 8, 89, 18, 49865661]
+[1, 9, 3, 8, 89, 18, 49865661]
+[1, 9, 3, 8, 89, 18, 49865661]
+[1, 9, 3, 8, 89, 18, 49865661]
+[1, 9, 3, 8, 89, 18, 49865661]
+[9, 15, 718, 25, 561]
+-1.1666666666666665
+-193
+-33.666666666666664
+[9, 1, 8, 748151, 23675674981816]
+Error: RuntimeError: Out of bounds memory access (evaluating 'instance.exports._start()')
+Stack: python.wasm.wasm-function[_PyDict_Next]@[wasm code]
+python.wasm.wasm-function[PyDict_Next]@[wasm code]
+python.wasm.wasm-function[_PyModule_ClearDict]@[wasm code]
+python.wasm.wasm-function[_PyModule_Clear]@[wasm code]
+python.wasm.wasm-function[finalize_modules]@[wasm code]
+python.wasm.wasm-function[_Py_Finalize]@[wasm code]
+python.wasm.wasm-function[Py_FinalizeEx]@[wasm code]
+python.wasm.wasm-function[Py_RunMain]@[wasm code]
+python.wasm.wasm-function[pymain_main]@[wasm code]
+python.wasm.wasm-function[Py_BytesMain]@[wasm code]
+python.wasm.wasm-function[main]@[wasm code]
+python.wasm.wasm-function[__main_void]@[wasm code]
+python.wasm.wasm-function[_start]@[wasm code]
+start@module-ready-wasi-py.js:498:32
+@module-ready-wasi-py.js:5225:15

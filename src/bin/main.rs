@@ -19,7 +19,8 @@ async fn main() {
             let mut docker = docker_api::Docker::new("unix:///var/run/docker.sock").unwrap();
             //let mut rand_seed = (SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_millis() & ((1<<65) - 1)) as u64;
             let mut rand_seed = 17526186317047798642;
-            for i in 0..test_count{   
+            for i in 0..test_count{ 
+                cli_progress_bar.progress_one();
                 let testcase = testcase_generator.fuzz(&mut rand_seed);
                 let test_input = replace_scope_with_indent(&ir_to_ctx(&testcase, &mut rand_seed.clone()));
                 let mut results:Vec<PrintResult> = Vec::new(); 
@@ -80,7 +81,8 @@ async fn main() {
                     std::fs::write("./issues/native_vs_wasm/testcase".to_string() + &i.to_string() + ".py", &test_input).unwrap();
                     //omit_testcase_or_other_name("./issued_testcases/native_vs_wasm", &test_input, &LanguageType::Python);
                 }
-                cli_progress_bar.progress_one();
+                
+                break;
             }
 
 }

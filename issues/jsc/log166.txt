@@ -1,0 +1,11 @@
+Fatal Python error: _PyImport_InitCore: failed to initialize importlib
+Python runtime state: preinitialized
+Traceback (most recent call last):
+  File "<frozen importlib._bootstrap>", line 1540, in _install
+  File "<frozen importlib._bootstrap>", line 1529, in _setup
+  File "<frozen importlib._bootstrap>", line 1495, in _builtin_from_name
+  File "<frozen importlib._bootstrap>", line 921, in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 813, in module_from_spec
+  File "<frozen importlib._bootstrap>", line 995, in create_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+SystemError: error return without exception set
