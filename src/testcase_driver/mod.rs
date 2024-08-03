@@ -61,7 +61,7 @@ impl fmt::Display for IndicateBar
             progressed_bar.push('-');
         }
         progressed_bar.push_str("");
-        return write!(f, "{}] [{}/{}]\r", progressed_bar, self.progress, self.max_progress);
+        return write!(f, "{}] [{} exec/{} exec]\r", progressed_bar, self.progress, self.max_progress);
     }
 }
 impl IndicateBar
@@ -78,7 +78,7 @@ impl IndicateBar
     pub fn progress(&mut self, add_progress: u32)
     {
         self.progress += add_progress;
-        print!("\u{1f3a8} : \x1b[96m{}\x1b[0m\r", self);
+        print!("Test progress : \x1b[96m{}\x1b[0m\r", self);
         io::stdout().flush().unwrap();
     } 
     pub fn progress_one(&mut self)
