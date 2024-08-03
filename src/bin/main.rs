@@ -81,8 +81,6 @@ async fn main() {
                     std::fs::write("./issues/native_vs_wasm/testcase".to_string() + &i.to_string() + ".py", &test_input).unwrap();
                     //omit_testcase_or_other_name("./issued_testcases/native_vs_wasm", &test_input, &LanguageType::Python);
                 }
-                
-                break;
             }
 
 }
