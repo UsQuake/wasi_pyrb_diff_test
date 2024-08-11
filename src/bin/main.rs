@@ -10,6 +10,8 @@ async fn main() {
     let mut docker = docker_api::Docker::new("unix:///var/run/docker.sock").unwrap();
     //let rand_seed = (SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_millis() & ((1<<65) - 1)) as u64;
     let rand_seed = 17526186317047798642;
+    tokio::fs::write("./issues/latest_seed.txt", rand_seed.to_string()).await.unwrap();
+
     let test_exec = exec_test(&mut docker, test_count, rand_seed, LanguageType::Python);
     tokio::select! {
         _ = test_exec=>{},

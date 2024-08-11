@@ -116,34 +116,34 @@ pub async fn exec_test(docker:&mut Docker, test_count: u32, init_seed: u64, obje
 
             if is_jsc_and_spidermonkey_result_same{
 
-                std::fs::write("./issues/v8/log".to_string() + &i.to_string() + ".txt", &results[0].stdout).unwrap();
-                std::fs::write("./issues/v8/testcase".to_string() + &i.to_string() + testcase_file_ext, &test_input).unwrap();
+                tokio::fs::write("./issues/v8/log".to_string() + &i.to_string() + ".txt", &results[0].stdout).await.unwrap();
+                tokio::fs::write("./issues/v8/testcase".to_string() + &i.to_string() + testcase_file_ext, &test_input).await.unwrap();
 
             }else if is_v8_and_spidermonkey_result_same{
 
-                std::fs::write("./issues/jsc/log".to_string() + &i.to_string() + ".txt", &results[1].stdout).unwrap();
-                std::fs::write("./issues/jsc/testcase".to_string() + &i.to_string() + testcase_file_ext, &test_input).unwrap();
+                tokio::fs::write("./issues/jsc/log".to_string() + &i.to_string() + ".txt", &results[1].stdout).await.unwrap();
+                tokio::fs::write("./issues/jsc/testcase".to_string() + &i.to_string() + testcase_file_ext, &test_input).await.unwrap();
 
             }else if is_v8_and_jsc_result_same{
 
-                std::fs::write("./issues/spm/log".to_string() + &i.to_string() + ".txt", &results[2].stdout).unwrap();
-                std::fs::write("./issues/spm/testcase".to_string() + &i.to_string() + testcase_file_ext, &test_input).unwrap();
+                tokio::fs::write("./issues/spm/log".to_string() + &i.to_string() + ".txt", &results[2].stdout).await.unwrap();
+                tokio::fs::write("./issues/spm/testcase".to_string() + &i.to_string() + testcase_file_ext, &test_input).await.unwrap();
 
             }else{
 
-                std::fs::write("./issues/unknown/log".to_string() + &i.to_string() + ".txt", 
+                tokio::fs::write("./issues/unknown/log".to_string() + &i.to_string() + ".txt", 
                 format!("d8(V8):\n{}\n", results[0].stdout)
                 + &format!("jsc(JavascriptCore):\n{}\n", results[1].stdout)
-                + &format!("JsShell(SpiderMonkey):\n{}\n", results[2].stdout)).unwrap();
-                std::fs::write("./issues/unknown/testcase".to_string() + &i.to_string() + testcase_file_ext, &test_input).unwrap();
+                + &format!("JsShell(SpiderMonkey):\n{}\n", results[2].stdout)).await.unwrap();
+                tokio::fs::write("./issues/unknown/testcase".to_string() + &i.to_string() + testcase_file_ext, &test_input).await.unwrap();
 
             }
 
         }else if !is_native_wasm_same{
-            std::fs::write("./issues/native_vs_wasm/log".to_string() + &i.to_string() + ".txt", 
+            tokio::fs::write("./issues/native_vs_wasm/log".to_string() + &i.to_string() + ".txt", 
             format!("d8(V8):\n{}\n", results[0].stdout)
-            + &format!("Native:\n{}\n", results[3].stdout.clone() + &results[3].stderr)).unwrap();
-            std::fs::write("./issues/native_vs_wasm/testcase".to_string() + &i.to_string() + testcase_file_ext, &test_input).unwrap();
+            + &format!("Native:\n{}\n", results[3].stdout.clone() + &results[3].stderr)).await.unwrap();
+             tokio::fs::write("./issues/native_vs_wasm/testcase".to_string() + &i.to_string() + testcase_file_ext, &test_input).await.unwrap();
             //omit_testcase_or_other_name("./issued_testcases/native_vs_wasm", &test_input, &LanguageType::Python);
         }
     }
