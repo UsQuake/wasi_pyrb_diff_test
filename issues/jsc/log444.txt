@@ -1,6 +1,20 @@
-Fatal Python error: Failed to import encodings module
-Python runtime state: core initialized
-[1;35mValueError[0m: [35mInvalid CFG, inconsistent stackdepth[0m
-
-Current thread 0x00000000 (most recent call first):
-  <no Python frame>
+Error: RuntimeError: Out of bounds memory access (evaluating 'instance.exports._start()')
+Stack: python.wasm.wasm-function[r_object]@[wasm code]
+python.wasm.wasm-function[r_object]@[wasm code]
+python.wasm.wasm-function[r_object]@[wasm code]
+python.wasm.wasm-function[r_object]@[wasm code]
+python.wasm.wasm-function[read_object]@[wasm code]
+python.wasm.wasm-function[PyMarshal_ReadObjectFromString]@[wasm code]
+python.wasm.wasm-function[unmarshal_frozen_code]@[wasm code]
+python.wasm.wasm-function[PyImport_ImportFrozenModuleObject]@[wasm code]
+python.wasm.wasm-function[_PyImport_InitCore]@[wasm code]
+python.wasm.wasm-function[pycore_interp_init]@[wasm code]
+python.wasm.wasm-function[pyinit_config]@[wasm code]
+python.wasm.wasm-function[Py_InitializeFromConfig]@[wasm code]
+python.wasm.wasm-function[pymain_main]@[wasm code]
+python.wasm.wasm-function[Py_BytesMain]@[wasm code]
+python.wasm.wasm-function[main]@[wasm code]
+python.wasm.wasm-function[__main_void]@[wasm code]
+python.wasm.wasm-function[_start]@[wasm code]
+start@module-ready-wasi-py.js:498:32
+@module-ready-wasi-py.js:5232:15

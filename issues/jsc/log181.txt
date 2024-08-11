@@ -1,20 +1,22 @@
-Fatal Python error: Failed to import encodings module
-Python runtime state: core initialized
-Traceback (most recent call last):
-  File "<frozen importlib._bootstrap_external>", line 1514, in _path_importer_cache
-KeyError: '/Lib/encodings'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Lib/encodings/__init__.py", line 33, in <module>
-  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1322, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 1262, in _find_spec
-  File "<frozen importlib._bootstrap_external>", line 1557, in find_spec
-  File "<frozen importlib._bootstrap_external>", line 1529, in _get_spec
-  File "<frozen importlib._bootstrap_external>", line 1516, in _path_importer_cache
-  File "<frozen importlib._bootstrap_external>", line 1492, in _path_hooks
-  File "<frozen importlib._bootstrap_external>", line 1718, in path_hook_for_FileFinder
-  File "<frozen importlib._bootstrap_external>", line 1602, in __init__
-ValueError: generator already executing
+Error: RuntimeError: Out of bounds memory access (evaluating 'instance.exports._start()')
+Stack: python.wasm.wasm-function[_PyEval_LoadName]@[wasm code]
+python.wasm.wasm-function[_PyEval_EvalFrameDefault]@[wasm code]
+python.wasm.wasm-function[_PyEval_Vector]@[wasm code]
+python.wasm.wasm-function[builtin___build_class__]@[wasm code]
+python.wasm.wasm-function[cfunction_vectorcall_FASTCALL_KEYWORDS]@[wasm code]
+python.wasm.wasm-function[PyObject_Vectorcall]@[wasm code]
+python.wasm.wasm-function[_PyEval_EvalFrameDefault]@[wasm code]
+python.wasm.wasm-function[PyEval_EvalCode]@[wasm code]
+python.wasm.wasm-function[exec_code_in_module]@[wasm code]
+python.wasm.wasm-function[PyImport_ImportFrozenModuleObject]@[wasm code]
+python.wasm.wasm-function[_PyImport_InitCore]@[wasm code]
+python.wasm.wasm-function[pycore_interp_init]@[wasm code]
+python.wasm.wasm-function[pyinit_config]@[wasm code]
+python.wasm.wasm-function[Py_InitializeFromConfig]@[wasm code]
+python.wasm.wasm-function[pymain_main]@[wasm code]
+python.wasm.wasm-function[Py_BytesMain]@[wasm code]
+python.wasm.wasm-function[main]@[wasm code]
+python.wasm.wasm-function[__main_void]@[wasm code]
+python.wasm.wasm-function[_start]@[wasm code]
+start@module-ready-wasi-py.js:498:32
+@module-ready-wasi-py.js:5232:15

@@ -2,7 +2,8 @@ use docker_api::opts::{ContainerCreateOpts,ContainerRestartOpts, ContainerStopOp
 use docker_api::{conn::TtyChunk, Docker};
 use futures::StreamExt;
 use tokio::time::{sleep, Duration};
-use std::str;
+use std::io::Write;
+use std::{io, str};
 
 use crate::grammar::predef_grammars::{get_python_grammar, get_ruby_grammar};
 use crate::grammar::str_helper::replace_scope_with_indent;
@@ -115,25 +116,21 @@ pub async fn exec_test(docker:&mut Docker, test_count: u32, init_seed: u64, obje
 
             if is_jsc_and_spidermonkey_result_same{
 
-                println!("⚠Warning!: V8 result is different with other engines!");
                 std::fs::write("./issues/v8/log".to_string() + &i.to_string() + ".txt", &results[0].stdout).unwrap();
                 std::fs::write("./issues/v8/testcase".to_string() + &i.to_string() + testcase_file_ext, &test_input).unwrap();
 
             }else if is_v8_and_spidermonkey_result_same{
 
-                println!("⚠Warning!: JavascriptCore result is different with other engines!");
                 std::fs::write("./issues/jsc/log".to_string() + &i.to_string() + ".txt", &results[1].stdout).unwrap();
                 std::fs::write("./issues/jsc/testcase".to_string() + &i.to_string() + testcase_file_ext, &test_input).unwrap();
 
             }else if is_v8_and_jsc_result_same{
 
-                println!("⚠Warning!: SpiderMonkey result is different with other engines!");
                 std::fs::write("./issues/spm/log".to_string() + &i.to_string() + ".txt", &results[2].stdout).unwrap();
                 std::fs::write("./issues/spm/testcase".to_string() + &i.to_string() + testcase_file_ext, &test_input).unwrap();
 
             }else{
 
-                println!("⚠Warning!: Each result of js engines different with other engines!");
                 std::fs::write("./issues/unknown/log".to_string() + &i.to_string() + ".txt", 
                 format!("d8(V8):\n{}\n", results[0].stdout)
                 + &format!("jsc(JavascriptCore):\n{}\n", results[1].stdout)
@@ -275,7 +272,8 @@ pub async fn execute_test<'a>(docker:&mut Docker, test_target:&TestInfo, testcas
                                         //Request completed within 10 seconds.;
                                     }
                                     _ = sleep(Duration::from_secs(10)) => {
-                                        println!("10 seconds elapsed. skiping.");
+                                        println!("10 seconds elapsed during getting console output. skip test.");
+                                        io::stdout().flush().unwrap();
                                         break;
                                 }
                                 }
@@ -286,7 +284,8 @@ pub async fn execute_test<'a>(docker:&mut Docker, test_target:&TestInfo, testcas
                    
                 },
                 _ = sleep(Duration::from_secs(10)) => {
-                    println!("10 seconds elapsed. skiping.");
+                    println!("10 seconds during executing test command. skip test.");
+                    io::stdout().flush().unwrap();
                 }
             }
             
