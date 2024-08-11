@@ -29,7 +29,7 @@ pub struct TestInfo{
     pub target_platform:PlatformType,
     pub target_language:LanguageType
 }
-pub async fn exec_test(docker:&mut Docker, test_count: u32, init_seed: u64, object_interpreter:LanguageType){
+pub async fn exec_test(docker:&mut Docker, test_count: usize, init_seed: u64, object_interpreter:LanguageType){
     let mut cli_progress_bar = IndicateBar::new(test_count);
     let language_grammar = match object_interpreter{
         LanguageType::Python => &get_python_grammar(),

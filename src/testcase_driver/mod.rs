@@ -40,8 +40,8 @@ pub fn omit_testcase_or_other_name<'a>(path: &'a str, content: &'a str, interpre
 
 pub struct IndicateBar 
 {
-    pub max_progress: u32,
-    pub progress: u32
+    pub max_progress: usize,
+    pub progress: usize
 }
 impl fmt::Display for IndicateBar
 {
@@ -66,7 +66,7 @@ impl fmt::Display for IndicateBar
 }
 impl IndicateBar
 {
-    pub fn new(max: u32) ->Self
+    pub fn new(max: usize) ->Self
     {
         Self
         {
@@ -75,7 +75,7 @@ impl IndicateBar
         }
     }
 
-    pub fn progress(&mut self, add_progress: u32)
+    pub fn progress(&mut self, add_progress: usize)
     {
         self.progress += add_progress;
         print!("Test progress : \x1b[96m{}\x1b[0m\r", self);
